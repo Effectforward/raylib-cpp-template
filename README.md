@@ -8,7 +8,7 @@ A cross-platform C++ template using CMake and raylib. Configured for Windows, Li
 - raylib automatically downloaded and built via FetchContent
 - Code formatting with clang-format
 - Pre-configured VSCode environment
-- C++20 standard
+- C++17 standard
 
 ## Prerequisites
 
