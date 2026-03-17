@@ -1,0 +1,112 @@
+# Raylib C++ Template
+
+A cross-platform C++ template using CMake and raylib. Configured for Windows, Linux, and macOS.
+
+## Features
+
+- Cross-platform build system using CMake
+- raylib automatically downloaded and built via FetchContent
+- Code formatting with clang-format
+- Pre-configured VSCode environment
+- C++20 standard
+
+## Prerequisites
+
+Install CMake (3.28+), Git, and platform-specific build tools:
+
+### Ubuntu / Debian
+```bash
+sudo apt install cmake git build-essential libx11-dev libxrandr-dev libxinerama-dev libxi-dev libxext-dev libxcursor-dev mesa-common-dev
+```
+
+### Fedora / RHEL / CentOS
+```bash
+sudo dnf install cmake git gcc-c++ libX11-devel libXrandr-devel libXinerama-devel libXi-devel libXext-devel libXcursor-devel mesa-libGL-devel
+```
+
+### Arch / Manjaro
+```bash
+sudo pacman -S cmake git base-devel libx11 libxrandr libxinerama libxi libxext libxcursor mesa
+```
+
+### openSUSE
+```bash
+sudo zypper install cmake git gcc-c++ libX11-devel libXrandr-devel libXinerama-devel libXi-devel libXext-devel libXcursor-devel Mesa-devel
+```
+
+### Alpine
+```bash
+apk add cmake git musl-dev gcc g++ libx11-dev libxrandr-dev libxinerama-dev libxi-dev libxext-dev libxcursor-dev mesa-dev
+```
+
+### macOS
+```bash
+brew install cmake git
+```
+
+### Windows
+1. Download CMake: https://cmake.org/download/
+2. Download Git: https://git-scm.com/download/win
+3. Download Visual Studio Build Tools: https://visualstudio.microsoft.com/downloads/
+4. During installation, select "Desktop development with C++"
+
+## Building
+
+```bash
+git clone <repository>
+cd <repository>
+cmake -B build
+cmake --build build
+```
+
+## Running
+
+```bash
+./build/bin/game              # Linux/macOS
+./build/bin/game.exe          # Windows
+```
+
+## Development
+
+### Adding Source Files
+
+Edit `CMakeLists.txt` and add new files to the executable:
+
+```cmake
+add_executable(game 
+    src/main.cpp
+    src/new_file.cpp
+)
+```
+
+Rebuild: `cmake --build build`
+
+### Code Style
+
+Code formatting is configured with clang-format:
+- Indentation: tabs (displayed as 4 spaces)
+- Line length: 100 characters
+- Brace style: K&R
+
+Apply formatting: `clang-format -i src/filename.cpp`
+
+VSCode auto-formats on save.
+
+### IDE
+
+You are more than welcome to use any editor or IDE. This project includes VSCode configuration for convenience (clangd IntelliSense, cmake syntax highlighting). Extensions install automatically on first launch if using VSCode.
+
+## Project Structure
+
+```
+.
+├── CMakeLists.txt           # Build configuration
+├── .clang-format            # Code formatting rules
+├── .gitignore               # Git ignore patterns
+├── SETUP.md                 # Setup guide
+├── .vscode/                 # VSCode configuration
+├── src/
+│   └── main.cpp             # Main source file
+└── include/
+    └── game.h               # Header file
+```
