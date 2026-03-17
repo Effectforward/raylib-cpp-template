@@ -46,9 +46,10 @@ brew install cmake git
 
 ### Windows
 1. Download CMake: https://cmake.org/download/
+- During installation, check "Add CMake to system PATH"
 2. Download Git: https://git-scm.com/download/win
-3. Download Visual Studio Build Tools: https://visualstudio.microsoft.com/downloads/
-4. During installation, select "Desktop development with C++"
+3. Download Visual Studio Build Tools: https://visualstudio.microsoft.com/visual-cpp-build-tools/
+- During installation, select "Desktop development with C++"
 
 ## Building
 
@@ -59,7 +60,11 @@ cmake -B build
 cmake --build build
 ```
 
-On successful build, a window opens displaying a green circle in the center of the screen. The circle responds to keyboard input (WASD or arrow keys to move, ESC to close the window).
+First build takes longer as raylib is downloaded and compiled. Subsequent builds are faster. 
+Time depends on internet connection and system performance.
+
+On successful build, a window opens displaying a green circle in the center. The circle responds 
+to keyboard input (WASD or arrow keys to move, ESC to close).
 
 ## Running
 
