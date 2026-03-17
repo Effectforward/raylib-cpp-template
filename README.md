@@ -53,11 +53,13 @@ brew install cmake git
 ## Building
 
 ```bash
-git clone <repository>
-cd <repository>
+git clone https://github.com/Effectforward/raylib-cpp-template.git
+cd raylib-cpp-template
 cmake -B build
 cmake --build build
 ```
+
+On successful build, a window opens displaying a green circle in the center of the screen. The circle responds to keyboard input (WASD or arrow keys to move, ESC to close the window).
 
 ## Running
 
