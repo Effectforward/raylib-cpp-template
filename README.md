@@ -2,6 +2,10 @@
 
 A cross-platform C++ template using CMake and raylib. Configured for Windows, Linux, and macOS.
 
+## Usage
+
+Click the green **"Use this template"** button on GitHub to create your own project from this template. This generates a fresh repository with clean history.
+
 ## Features
 
 - Cross-platform build system using CMake
