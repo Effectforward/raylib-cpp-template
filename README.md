@@ -110,7 +110,7 @@ You are more than welcome to use any editor or IDE. This project includes VSCode
 ├── CMakeLists.txt           # Build configuration
 ├── .clang-format            # Code formatting rules
 ├── .gitignore               # Git ignore patterns
-├── SETUP.md                 # Setup guide
+├── README.md                # Setup guide
 ├── .vscode/                 # VSCode configuration
 ├── src/
 │   └── main.cpp             # Main source file
