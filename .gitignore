@@ -79,7 +79,7 @@ Testing/
 Makefile
 _deps/
 build/
-
+external/
 ### IDE ###
 .vscode/
 .idea/
