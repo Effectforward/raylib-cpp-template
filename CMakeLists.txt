@@ -19,12 +19,17 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
+# This stores all fetched content in a central location outside the build folder
+set(FETCHCONTENT_BASE_DIR "${CMAKE_SOURCE_DIR}/external")
+
+
 include(FetchContent)
 
 FetchContent_Declare(
     raylib
     GIT_REPOSITORY https://github.com/raysan5/raylib.git
     GIT_TAG 5.0
+    GIT_SHALLOW    ON
 )
 
 FetchContent_MakeAvailable(raylib)
