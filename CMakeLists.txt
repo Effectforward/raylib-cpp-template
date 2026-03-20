@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.28)
 project(GameProject)
 
+
 set(CMAKE_VERBOSE_MAKEFILE ON)
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
 # Generate compile_commands.json in source root for clangd
@@ -34,25 +34,19 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
-include_directories(${CMAKE_SOURCE_DIR}/include)
+target_include_directories(game PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 add_executable(game 
     src/main.cpp
 )
 
-target_link_libraries(game PRIVATE raylib)
+target_link_libraries(game PRIVATE raylib Threads::Threads)
 
-if(UNIX AND NOT APPLE)
-    target_link_libraries(game PRIVATE pthread)
-endif()
-
-if(NOT CMAKE_BUILD_TYPE)
-    set(CMAKE_BUILD_TYPE Release)
-endif()
+find_package(Threads REQUIRED)
 
 add_custom_command(TARGET game POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
     ${CMAKE_BINARY_DIR}/compile_commands.json
     ${CMAKE_SOURCE_DIR}/compile_commands.json
-    COMMENT "Copying compile_commands.json for clangd"
+    COMMENT "Syncing compile_commands.json for clangd"
 )
