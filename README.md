@@ -57,6 +57,7 @@ brew install cmake git
 
 ## Building
 
+> **Windows users:** Run these commands from "Developer Command Prompt for VS" (not regular cmd)
 ```bash
 git clone https://github.com/Effectforward/raylib-cpp-template.git
 cd raylib-cpp-template

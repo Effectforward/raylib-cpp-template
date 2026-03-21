@@ -1,17 +1,14 @@
 cmake_minimum_required(VERSION 3.31.10)
 project(GameProject)
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type" FORCE)
+endif()
+
 
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
-# Generate compile_commands.json in source root for clangd
-if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
-    if(EXISTS "${CMAKE_BINARY_DIR}/compile_commands.json")
-        file(COPY "${CMAKE_BINARY_DIR}/compile_commands.json" 
-             DESTINATION "${CMAKE_SOURCE_DIR}")
-    endif()
-endif()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
