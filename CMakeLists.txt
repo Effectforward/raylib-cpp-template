@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0)
+cmake_minimum_required(VERSION 3.31.10)
 project(GameProject)
 
 
@@ -6,7 +6,7 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
 # Generate compile_commands.json in source root for clangd
-if(NOT CMAKE_BUILD_TYPE EQUAL "Debug")
+if(NOT CMAKE_BUILD_TYPE STREQUAL "Debug")
     if(EXISTS "${CMAKE_BINARY_DIR}/compile_commands.json")
         file(COPY "${CMAKE_BINARY_DIR}/compile_commands.json" 
              DESTINATION "${CMAKE_SOURCE_DIR}")
@@ -34,15 +34,16 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(raylib)
 
-target_include_directories(game PRIVATE ${CMAKE_SOURCE_DIR}/include)
-
 add_executable(game 
     src/main.cpp
 )
 
-target_link_libraries(game PRIVATE raylib Threads::Threads)
+target_include_directories(game PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 find_package(Threads REQUIRED)
+
+target_link_libraries(game PRIVATE raylib Threads::Threads)
+
 
 add_custom_command(TARGET game POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
