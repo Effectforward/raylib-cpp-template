@@ -43,6 +43,7 @@
 *.su
 *.idb
 *.pdb
+*.dwo
 
 # Kernel Module Compile Results
 *.mod*
@@ -75,17 +76,22 @@ cmake_install.cmake
 CTestTestfile.cmake
 install_manifest.txt
 compile_commands.json
+CMakeUserPresets.json
 Testing/
 Makefile
 _deps/
 build/
 external/
 ### IDE ###
-.vscode/
+.vscode/*
+!.vscode/c_cpp_properties.json
+!.vscode/extensions.json
+!.vscode/settings.json
 .idea/
 *.sln
 *.vcxproj
 *.vcxproj.filters
+.vs/
 
 ### OS ###
 .DS_Store
@@ -97,3 +103,11 @@ Thumbs.db
 *~
 .tmp/
 .cache/
+*.tmp
+*.log
+*.bak
+
+.clangd/
+.cache/
+*.log
+core
