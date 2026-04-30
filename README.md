@@ -55,23 +55,32 @@ brew install cmake git
 3. Download Visual Studio Build Tools: https://visualstudio.microsoft.com/visual-cpp-build-tools/
 - During installation, select "Desktop development with C++"
 
-## Building
+## VS Code Workflow (Recommended)
 
-> **Windows users:** Run these commands from "Developer Command Prompt for VS" (not regular cmd)
+This template is fully pre-configured for a zero-friction experience in **Visual Studio Code**:
+
+1. Open the project folder in VS Code.
+2. VS Code will show a popup recommending extensions (`clangd`, `CodeLLDB`, etc.). Click **Install**.
+3. Press **F5**.
+
+The project will automatically configure CMake, build the game, and attach a cross-platform debugger. It works perfectly out-of-the-box on Windows, Linux, and macOS without manually typing any terminal commands.
+
+## Manual Terminal Building (Alternative)
+
+If you prefer building from the terminal:
+
+> **Windows users:** If using MSVC, run these commands from the "Developer Command Prompt for VS".
+
 ```bash
 git clone https://github.com/Effectforward/raylib-cpp-template.git
 cd raylib-cpp-template
-cmake -B build
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
 cmake --build build
 ```
 
-First build takes longer as raylib is downloaded and compiled. Subsequent builds are faster. 
-Time depends on internet connection and system performance.
+The first build takes slightly longer as raylib is downloaded and compiled. Subsequent builds are nearly instantaneous.
 
-On successful build, a window opens displaying a green circle in the center. The circle responds 
-to keyboard input (WASD or arrow keys to move, ESC to close).
-
-## Running
+On successful build, you can run the executable:
 
 ```bash
 ./build/bin/game              # Linux/macOS
@@ -82,7 +91,7 @@ to keyboard input (WASD or arrow keys to move, ESC to close).
 
 ### Adding Source Files
 
-Edit `CMakeLists.txt` and add new files to the executable:
+Edit `CMakeLists.txt` and add new files to the `add_executable` list:
 
 ```cmake
 add_executable(game 
@@ -91,22 +100,17 @@ add_executable(game
 )
 ```
 
-Rebuild: `cmake --build build`
+If using VS Code, just press **F5** to automatically re-configure and rebuild. If using the terminal, run `cmake --build build`.
 
 ### Code Style
 
-Code formatting is configured with clang-format:
+Code formatting is configured with `clang-format`:
 - Indentation: tabs (displayed as 4 spaces)
 - Line length: 100 characters
 - Brace style: K&R
 
-Apply formatting: `clang-format -i src/filename.cpp`
-
-VSCode auto-formats on save.
-
-### IDE
-
-You are more than welcome to use any editor or IDE. This project includes VSCode configuration for convenience (clangd IntelliSense, cmake syntax highlighting). Extensions install automatically on first launch if using VSCode.
+Apply formatting manually: `clang-format -i src/filename.cpp`
+**Note:** The provided VS Code environment automatically formats your code on save.
 
 ## Project Structure
 
