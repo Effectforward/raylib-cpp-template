@@ -126,3 +126,4 @@ Apply formatting manually: `clang-format -i src/filename.cpp`
 └── include/
     └── game.h               # Header file
 ```
+## Note:If you want pure OOP experience consider using a wrapper
